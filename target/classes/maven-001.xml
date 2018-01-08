@@ -12,9 +12,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
     <db:mysql-config name="MySQL_Configuration" host="mudb.mulesoft-training.com" port="3306" user="mule" password="mule" database="training" doc:name="MySQL Configuration"/>
     <flow name="maven-001Flow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/maven" allowedMethods="GET" doc:name="HTTP"/>
-        <db:select config-ref="MySQL_Configuration" doc:name="Database">
-            <db:parameterized-query><![CDATA[select * from american]]></db:parameterized-query>
-        </db:select>
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
+        <set-payload value="#[&quot;Hello world&quot;]" doc:name="Set Payload"/>
     </flow>
 </mule>
